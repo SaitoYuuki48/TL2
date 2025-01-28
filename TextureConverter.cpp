@@ -27,6 +27,8 @@ void TextureConverter::LoadWICTextureFromFile(const std::string& filePath)
 	//テクスチャを読み込む
 	HRESULT result = LoadFromWICFile(wfilePath.c_str(), WIC_FLAGS_NONE, &metadata_, scratchImage_);
 	assert(SUCCEEDED(result));
+	// フォルダパスとファイル名を分離する
+	SeparateFilePath(wfilePath);
 }
 
 std::wstring TextureConverter::ConvertMultiByteStringToWideString(const std::string mString)
